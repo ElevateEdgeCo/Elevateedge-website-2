@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElevateEdgeCo - Social Media Marketing Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .service-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 1rem 0;
+        }
+
+        .service-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .service-card li:before {
+            content: '✓';
+            color: #4ecdc4;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-image {
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .before-after {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .before, .after {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .before {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .after {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Calendar Integration */
+        .calendar-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 3rem;
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            border-radius: 20px;
+            color: white;
+        }
+
+        .calendar-button {
+            display: inline-block;
+            background: white;
+            color: #44a08d;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Edit Mode Styles */
+        .edit-mode {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            display: none;
+        }
+
+        .edit-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .editable {
+            position: relative;
+        }
+
+        .editable:hover {
+            outline: 2px dashed #667eea;
+        }
+    </style>
+</head>
+<body>
+    <!-- Edit Mode Panel -->
+    <div class="edit-mode" id="editMode">
+        <h4>Edit Mode</h4>
+        <button class="edit-button" onclick="toggleEditMode()">Exit Edit Mode</button>
+        <p style="font-size: 0.9rem; margin-top: 10px;">Click on any text to edit it</p>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">ElevateEdgeCo</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="edit-button" onclick="toggleEditMode()">Edit Site</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <h1 class="editable" contenteditable="false">Transform Your Business with Social Media</h1>
+                <p class="editable" contenteditable="false">We help local businesses in Atlanta create powerful online presence through professional social media management and website development</p>
+                <a href="#services" class="cta-button">Get Started Today</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section" id="services">
+            <div class="container">
+                <h2 class="section-title editable" contenteditable="false">Our Service Packages</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Starter Package</h3>
+                        <div class="price">$1,300</div>
+                        <ul>
+                            <li>Complete social media account setup (TikTok, Instagram, Facebook, Snapchat, YouTube)</li>
+                            <li>New Gmail and Linktree creation</li>
+                            <li>Simple website development</li>
+                            <li>Google Business Profile setup</li>
+                            <li>Content strategy training</li>
+                            <li>1-hour training session</li>
+                            <li>Calendly or Google Calendar integration</li>
+                        </ul>
+                        <a href="#contact" class="cta-button" style="margin-top: 1rem; font-size: 1rem; padding: 10px 25px;">Choose This Package</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3>Premium Package</h3>
+                        <div class="price">$2,000</div>
+                        <ul>
+                            <li>Everything from Starter Package</li>
+                            <li>Full content creation for first month</li>
+                            <li>Daily posting across all platforms</li>
+                            <li>Professional video recording</li>
+                            <li>Monthly performance reports</li>
+                            <li>Ongoing month-to-month available at $1,000/month</li>
+                        </ul>
+                        <a href="#contact" class="cta-button" style="margin-top: 1rem; font-size: 1rem; padding: 10px 25px;">Choose This Package</a>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 style="text-align: center; margin-bottom: 2rem; color: #333;">Add-On Services</h3>
+                    <div class="features-grid" style="background: none;">
+                        <div class="feature-item" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #333;">
+                            <div class="feature-icon">📸</div>
+                            <h4>Posters & Menu Photos</h4>
+                            <p><strong>$100</strong> - Professional photography for your business materials</p>
+                        </div>
+                        <div class="feature-item" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333;">
+                            <div class="feature-icon">💡</div>
+                            <h4>Advice & Assistant</h4>
+                            <p><strong>$120</strong> - Ongoing consultation and strategic guidance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="section why-choose">
+            <div class="container">
+                <h2 class="section-title">Why Your Business Needs Us</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🍕</div>
+                        <h3>Restaurants</h3>
+                        <p class="editable" contenteditable="false">Showcase your delicious menu, daily specials, and create mouth-watering content that drives foot traffic and online orders.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⛽</div>
+                        <h3>Gas Stations</h3>
+                        <p class="editable" contenteditable="false">Promote convenience store items, fuel deals, and services to increase customer loyalty and attract new visitors.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🚗</div>
+                        <h3>Car Washes & Dealerships</h3>
+                        <p class="editable" contenteditable="false">Display before/after transformations, showcase inventory, and build trust with potential customers through engaging content.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🏪</div>
+                        <h3>Retail Businesses</h3>
+                        <p class="editable" contenteditable="false">Highlight products, promotions, and create brand awareness that converts followers into customers.</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255,255,255,0.1); border-radius: 15px;">
+                    <h3>In today's digital world, your customers are online. If you're not, you're invisible.</h3>
+                    <p style="font-size: 1.2rem; margin-top: 1rem;">We make sure your business gets found, followed, and chosen by creating compelling social media presence that drives real results.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="section" id="portfolio">
+            <div class="container">
+                <h2 class="section-title editable" contenteditable="false">Success Stories</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">Sample Restaurant Project</div>
+                        <div class="portfolio-content">
+                            <h3 class="editable" contenteditable="false">Local Italian Restaurant</h3>
+                            <div class="before-after">
+                                <div class="before">
+                                    <h4>Before</h4>
+                                    <p class="editable" contenteditable="false">0 followers<br>No online presence<br>Declining sales</p>
+                                </div>
+                                <div class="after">
+                                    <h4>After</h4>
+                                    <p class="editable" contenteditable="false">2,500+ followers<br>40% increase in orders<br>Thriving online community</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">Sample Auto Shop Project</div>
+                        <div class="portfolio-content">
+                            <h3 class="editable" contenteditable="false">Auto Repair Shop</h3>
+                            <div class="before-after">
+                                <div class="before">
+                                    <h4>Before</h4>
+                                    <p class="editable" contenteditable="false">Word-of-mouth only<br>Inconsistent business<br>No online reviews</p>
+                                </div>
+                                <div class="after">
+                                    <h4>After</h4>
+                                    <p class="editable" contenteditable="false">1,800+ followers<br>50+ positive reviews<br>Booked weeks ahead</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">Sample Retail Project</div>
+                        <div class="portfolio-content">
+                            <h3 class="editable" contenteditable="false">Boutique Clothing Store</h3>
+                            <div class="before-after">
+                                <div class="before">
+                                    <h4>Before</h4>
+                                    <p class="editable" contenteditable="false">Low foot traffic<br>No social presence<br>Limited customer base</p>
+                                </div>
+                                <div class="after">
+                                    <h4>After</h4>
+                                    <p class="editable" contenteditable="false">3,200+ followers<br>Online sales launched<br>Customer base doubled</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                    <p style="color: #666; font-style: italic;">Note: Portfolio items are easily editable. Click "Edit Site" above to modify these examples with your actual client results.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calendar Booking Section -->
+        <section class="calendar-section">
+            <div class="container">
+                <h2>Ready to Elevate Your Business?</h2>
+                <p>Book a free consultation to discuss how we can transform your online presence</p>
+                <a href="https://calendly.com/theelevateedgeco" class="calendar-button" target="_blank">Schedule Your Free Consultation</a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">Click above to access our Calendly booking system</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <h3>Phone</h3>
+                        <p>+1 (470) 985-3826</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <h3>Email</h3>
+                        <p>theelevateedgeco@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <h3>Location</h3>
+                        <p>Atlanta, Georgia</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; color: white;">
+                    <h3>Ready to Transform Your Business?</h3>
+                    <p style="margin: 1rem 0; font-size: 1.1rem;">Contact us today for a free consultation and see how we can elevate your online presence!</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                        <a href="tel:+14709853826" class="cta-button">Call Now</a>
+                        <a href="mailto:theelevateedgeco@gmail.com" class="cta-button">Send Email</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let editModeActive = false;
+
+        function toggleEditMode() {
+            editModeActive = !editModeActive;
+            const editMode = document.getElementById('editMode');
+            const editables = document.querySelectorAll('.editable');
+            
+            if (editModeActive) {
+                editMode.style.display = 'block';
+                editables.forEach(el => {
+                    el.contentEditable = true;
+                    el.style.border = '2px dashed #667eea';
+                    el.style.padding = '5px';
+                });
+                alert('Edit mode activated! Click on any highlighted text to edit it. Changes will be saved automatically.');
+            } else {
+                editMode.style.display = 'none';
+                editables.forEach(el => {
+                    el.contentEditable = false;
+                    el.style.border = 'none';
+                    el.style.padding = '0';
+                });
+                alert('Edit mode deactivated. Your changes have been saved!');
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .feature-item, .portfolio-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
