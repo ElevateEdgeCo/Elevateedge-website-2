@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ElevateEdgeCo &ndash; Social Media Solutions</title>
+  <!-- Font import for smooth typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome icons for social links -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Calendly widget styles for popup scheduling -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <style>
+    /* Basic reset and global styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fdfdfd;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    header {
+      /* Use a more professional deep blue gradient for the header */
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      padding: 1rem 2rem;
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li a {
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #f5f5f5;
+    }
+    /* Hero section */
+    .hero {
+      padding: 4rem 2rem;
+      position: relative;
+      color: #ffffff;
+      text-align: center;
+    }
+    /* Background image within hero inserted via an <img> element */
+    .hero .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* Semi‑transparent overlay to improve text contrast against the background image */
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 0;
+    }
+    .hero .content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: #ffffff;
+      color: #d43f8d;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: #f5f5f5;
+    }
+    /* Section styling */
+    section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: #0250c5;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+    .service-card i {
+      font-size: 2rem;
+      color: #d43f8d;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .service-card p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+    /* About section */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+    .about img {
+      max-width: 100%;
+      border-radius: 10px;
+      flex: 1 1 400px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .about .about-content {
+      flex: 1 1 400px;
+    }
+    .about .about-content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #d43f8d;
+    }
+    .about .about-content p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #444;
+    }
+    /* Contact section */
+    .contact-form {
+      display: grid;
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: inherit;
+      width: 100%;
+    }
+    .contact-form button {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      background: #0250c5;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .contact-form button:hover {
+      background: #023f9e;
+    }
+
+    /* Packages & Add‑ons */
+    .packages,
+    .addons,
+    .why-business,
+    .success-stories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .package-card,
+    .addon-card {
+      /* Softer professional palette for package and add-on cards */
+      background: linear-gradient(135deg, #86a8e7, #91eae4);
+      border-radius: 12px;
+      padding: 1.5rem;
+      color: #002b5b;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+    }
+    .package-card h3,
+    .addon-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      color: #0a3d62;
+    }
+    .package-card .price,
+    .addon-card .price {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #0a3d62;
+    }
+    .package-card ul,
+    .case-before ul,
+    .case-after ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    .package-card ul li::before {
+      content: "\2714";
+      color: #fff;
+      margin-right: 0.5rem;
+    }
+    .addon-card p {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* Why Us */
+    .why-card {
+      background: #ffffff;
+      border: 1px solid #e6eef7;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    }
+    .why-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #0250c5;
+    }
+    .why-card p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .digital-note {
+      margin-top: 2rem;
+      font-style: italic;
+      background: #f4f7fb;
+      padding: 1rem;
+      border-left: 4px solid #2a5298;
+      border-radius: 8px;
+      color: #333;
+    }
+
+    /* Success stories */
+    .case-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .case-card h3 {
+      margin-bottom: 1rem;
+      color: #d43f8d;
+    }
+    .case-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .case-before,
+    .case-after {
+      flex: 1 1 200px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .case-before h4 {
+      color: #e74c3c;
+      margin-bottom: 0.5rem;
+    }
+    .case-after h4 {
+      color: #27ae60;
+      margin-bottom: 0.5rem;
+    }
+    .case-before ul li,
+    .case-after ul li {
+      margin-bottom: 0.25rem;
+      font-size: 0.9rem;
+    }
+
+    /* Consultation */
+    .consultation-card {
+      background: linear-gradient(135deg, #55d8c1, #6f7bf7);
+      border-radius: 12px;
+      padding: 2rem;
+      color: #ffffff;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    }
+    .consultation-card p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Contact details overrides */
+    .contact-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .contact-details .card {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      border-radius: 12px;
+      padding: 1.5rem;
+      color: #ffffff;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    /* Footer */
+    footer {
+      background: #1b1b1b;
+      color: #ddd;
+      padding: 2rem 2rem;
+      text-align: center;
+    }
+    footer .social-links {
+      margin-top: 1rem;
+    }
+    footer .social-links a {
+      margin: 0 0.5rem;
+      color: #ddd;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    footer .social-links a:hover {
+      color: #d43f8d;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .about {
+        flex-direction: column;
+      }
+      header .container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>ElevateEdgeCo</h1>
+      <nav>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="hero">
+    <!-- Background image for hero -->
+    <img src="handshake.jpg" alt="Handshake background" class="hero-bg" />
+    <div class="content">
+      <h2>Amplify Your Social Presence</h2>
+      <p>We launch and optimize social media for businesses, restaurants, car dealerships, and retailers &mdash; empowering you to excel independently online.</p>
+      <a href="#contact" class="btn-primary">Let's Get Started</a>
+    </div>
+  </section>
+  <section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services">
+      <div class="service-card">
+        <i class="fas fa-rocket"></i>
+        <h3>Launch Packages</h3>
+        <p>Kickstart your social presence with professional profile setup, content calendars, and brand alignment across platforms.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Optimization & Growth</h3>
+        <p>Refine your strategy with ongoing content optimization, audience engagement, and analytics-driven improvements.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-bullhorn"></i>
+        <h3>Paid Advertising</h3>
+        <p>Reach targeted audiences with tailored ad campaigns on major social networks, maximizing ROI and conversions.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-palette"></i>
+        <h3>Creative Design</h3>
+        <p>Stand out with custom graphics, branded content templates, and visually cohesive social feeds.</p>
+      </div>
+      <div class="service-card">
+        <i class="fas fa-database"></i>
+        <h3>Analytics & Reporting</h3>
+        <p>Gain insights with comprehensive reporting and actionable recommendations to refine your social strategy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Packages Section -->
+  <section id="packages">
+    <h2 class="section-title">Our Service Packages</h2>
+    <div class="packages">
+      <div class="package-card">
+        <h3>Starter Package</h3>
+        <p class="price">$1,300</p>
+        <ul>
+          <li>Complete social media account setup (TikTok, Instagram, Facebook, Snapchat, YouTube)</li>
+          <li>New Gmail and Linktree creation</li>
+          <li>Simple website development</li>
+          <li>Google Business Profile setup</li>
+          <li>Content strategy training</li>
+          <li>1‑hour training session</li>
+          <li>Calendly or Google Calendar integration</li>
+        </ul>
+      </div>
+      <div class="package-card">
+        <h3>Premium Package</h3>
+        <p class="price">$2,000</p>
+        <ul>
+          <li>Everything from Starter Package</li>
+          <li>Full content creation for first month</li>
+          <li>Daily posting across all platforms</li>
+          <li>Professional video recording</li>
+          <li>Monthly performance reports</li>
+          <li>Ongoing month‑to‑month available at $1,000/month</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add‑On Services Section -->
+  <section id="add-ons">
+    <h2 class="section-title">Add‑On Services</h2>
+    <div class="addons">
+      <div class="addon-card">
+        <h3>Posters &amp; Menu Photos</h3>
+        <p class="price">$100</p>
+        <p>Professional photography for your business materials.</p>
+      </div>
+      <div class="addon-card">
+        <h3>Advice &amp; Assistant</h3>
+        <p class="price">$120</p>
+        <p>Ongoing consultation and strategic guidance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Your Business Needs Us Section -->
+  <section id="why-us">
+    <h2 class="section-title">Why Your Business Needs Us</h2>
+    <div class="why-business">
+      <div class="why-card">
+        <h3>Restaurants</h3>
+        <p>Showcase your delicious menu, daily specials, and create mouth‑watering content that drives foot traffic and online orders.</p>
+      </div>
+      <div class="why-card">
+        <h3>Gas Stations</h3>
+        <p>Promote convenience store items, fuel deals, and services to increase customer loyalty and attract new visitors.</p>
+      </div>
+      <div class="why-card">
+        <h3>Car Washes &amp; Dealerships</h3>
+        <p>Display before/after transformations, showcase inventory, and build trust with potential customers through engaging content.</p>
+      </div>
+      <div class="why-card">
+        <h3>Retail Businesses</h3>
+        <p>Highlight products, promotions, and create brand awareness that converts followers into customers.</p>
+      </div>
+    </div>
+    <blockquote class="digital-note">In today’s digital world, your customers are online. If you’re not, you’re invisible. We make sure your business gets found, followed, and chosen by creating a compelling social media presence that drives real results.</blockquote>
+  </section>
+
+  <!-- Success Stories Section -->
+  <section id="success">
+    <h2 class="section-title">Success Stories</h2>
+    <div class="success-stories">
+      <div class="case-card">
+        <h3>Local Italian Restaurant</h3>
+        <div class="case-columns">
+          <div class="case-before">
+            <h4>Before</h4>
+            <ul>
+              <li>0 followers</li>
+              <li>No online presence</li>
+              <li>Declining sales</li>
+            </ul>
+          </div>
+          <div class="case-after">
+            <h4>After</h4>
+            <ul>
+              <li>2,500+ followers</li>
+              <li>40% increase in orders</li>
+              <li>Thriving online community</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <h3>Auto Repair Shop</h3>
+        <div class="case-columns">
+          <div class="case-before">
+            <h4>Before</h4>
+            <ul>
+              <li>Word‑of‑mouth only</li>
+              <li>Inconsistent business</li>
+              <li>No online reviews</li>
+            </ul>
+          </div>
+          <div class="case-after">
+            <h4>After</h4>
+            <ul>
+              <li>1,800+ followers</li>
+              <li>50+ positive reviews</li>
+              <li>Booked weeks ahead</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <h3>Boutique Clothing Store</h3>
+        <div class="case-columns">
+          <div class="case-before">
+            <h4>Before</h4>
+            <ul>
+              <li>Low foot traffic</li>
+              <li>No social presence</li>
+              <li>Limited customer base</li>
+            </ul>
+          </div>
+          <div class="case-after">
+            <h4>After</h4>
+            <ul>
+              <li>3,200+ followers</li>
+              <li>Online sales launched</li>
+              <li>Customer base doubled</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consultation Section -->
+  <section id="consultation">
+    <h2 class="section-title">Ready to Elevate Your Business?</h2>
+    <div class="consultation-card">
+      <p>Book a free consultation to discuss how we can transform your online presence.</p>
+      <a href="#" class="btn-primary" onclick="return openCalendly();">Schedule Your Free Consultation</a>
+      <p style="margin-top:0.5rem; font-size:0.85rem;">Click above to access our Calendly booking system.</p>
+    </div>
+  </section>
+  <section id="about">
+    <h2 class="section-title">About Us</h2>
+    <div class="about">
+      <!-- Updated image to an open office scene to complement the handshake hero. -->
+      <!-- Use locally downloaded office scene image for reliability -->
+      <img src="about-office.jpg" alt="Modern open plan office with people working" />
+      <div class="about-content">
+        <h3>Empowering Your Business</h3>
+        <p>ElevateEdgeCo is dedicated to helping companies of all sizes harness the power of social media. Our team of experts creates bespoke strategies that align with your brand’s voice and resonate with your audience.</p>
+        <p>We believe in a collaborative approach, working closely with you to understand your goals and providing ongoing support so that you can confidently manage your online presence.</p>
+      </div>
+    </div>
+  </section>
+  <section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <p style="text-align:center;margin-bottom:1.5rem;">We'd love to hear from you! Reach out using any of the methods below or send us a message using the form.</p>
+    <div class="contact-details">
+      <div class="card">
+        <i class="fas fa-phone fa-2x" style="margin-bottom:0.5rem;"></i>
+        <h3>Phone</h3>
+        <p>+1 (470) 985‑3826</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-envelope fa-2x" style="margin-bottom:0.5rem;"></i>
+        <h3>Email</h3>
+        <p><a href="mailto:theelevateedgeco@gmail.com" style="color:#fff;text-decoration:underline;">theelevateedgeco@gmail.com</a></p>
+      </div>
+      <div class="card">
+        <i class="fas fa-map-marker-alt fa-2x" style="margin-bottom:0.5rem;"></i>
+        <h3>Location</h3>
+        <p>Atlanta, Georgia</p>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We will be in touch soon.');" style="margin-top:2rem;">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+  <footer>
+    <p>&copy; <span id="year"></span> ElevateEdgeCo. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/theelevateedgeco" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@elevateedgeco" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61576587066032" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://twitter.com/elevateedgeco" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    </div>
+  </footer>
+  <!-- Calendly widget script -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+  <script>
+    // Dynamically update copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Function to open Calendly popup; replace URL with your actual scheduling link
+    function openCalendly() {
+      // Use the correct Calendly booking link provided by the client
+      Calendly.initPopupWidget({ url: 'https://calendly.com/theelevateedgeco' });
+      return false;
+    }
+  </script>
+</body>
+</html>
