@@ -1,490 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ElevateEdge — Social Media Agency</title>
-    <style>
-      /* Reset some basic elements */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElevateEdge</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo-container">
+      <div class="logo-letter">E</div>
+      <span class="brand">ElevateEdge</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#addons">Add‑Ons</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-      body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: #010714;
-        color: #f8fafc;
-        line-height: 1.6;
-      }
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Elevate Your Business with Digital Excellence</h1>
+      <p>We help restaurants, barbers, and small businesses thrive online with professional websites, ordering systems, and marketing tools.</p>
+      <a href="#contact" class="btn">Get Started</a>
+    </div>
+  </section>
 
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      header .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      header .logo span {
-        font-size: 1.25rem;
-        font-weight: 700;
-      }
-
-      nav ul {
-        list-style: none;
-        display: flex;
-        gap: 1.5rem;
-        margin: 0;
-        padding: 0;
-      }
-
-      nav li {
-        cursor: pointer;
-      }
-
-      .btn-primary {
-        background-color: #3b82f6;
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-      }
-
-      .hero {
-        position: relative;
-        overflow: hidden;
-        /* Added padding and gradient background for hero section */
-        padding: 6rem 2rem;
-        background: linear-gradient(to right, #073b81, #0d47a1);
-      }
-
-      .hero img {
-        /* Hide the hero image as we no longer use a file */
-        display: none;
-      }
-
-      .hero-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-      }
-
-      .hero-content h1 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-      }
-
-      .hero-content p {
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
-        max-width: 32rem;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .section {
-        padding: 4rem 2rem;
-      }
-
-      .section-title {
-        text-align: center;
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-      }
-
-      .packages {
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-      }
-
-      .package {
-        background-color: rgba(255, 255, 255, 0.05);
-        border-radius: 12px;
-        padding: 1.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        display: flex;
-        flex-direction: column;
-      }
-
-      .package h3 {
-        margin: 0;
-        font-size: 1.25rem;
-        margin-bottom: 1rem;
-      }
-
-      .package .price {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #3b82f6;
-        margin-bottom: 1rem;
-      }
-
-      .package ul {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 1rem 0;
-        flex-grow: 1;
-      }
-
-      .package ul li {
-        margin-bottom: 0.5rem;
-        padding-left: 1.2rem;
-        position: relative;
-      }
-
-      .package ul li::before {
-        content: '✔';
-        position: absolute;
-        left: 0;
-        color: #3b82f6;
-      }
-
-      .package .btn {
-        text-align: center;
-        background-color: #3b82f6;
-        color: white;
-        padding: 0.5rem;
-        border-radius: 6px;
-      }
-
-      .chart {
-        text-align: center;
-      }
-
-      .chart img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .clients-logos {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-        gap: 1.5rem;
-        align-items: center;
-        justify-items: center;
-      }
-
-      .clients-logos img {
-        max-width: 6rem;
-        opacity: 0.8;
-        transition: opacity 0.2s;
-      }
-
-      .clients-logos img:hover {
-        opacity: 1;
-      }
-
-      /* Client cards styling when using text-only logos */
-      .clients-logos .client-card {
-        background-color: rgba(255, 255, 255, 0.05);
-        padding: 1rem 1.5rem;
-        border-radius: 0.75rem;
-        font-weight: 600;
-        text-align: center;
-        color: #fff;
-      }
-
-      .testimonials {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-      }
-
-      .testimonial {
-        background-color: rgba(255, 255, 255, 0.05);
-        border-radius: 12px;
-        padding: 1.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .testimonial p {
-        margin: 0 0 1rem 0;
-      }
-
-      .testimonial .author {
-        font-weight: 700;
-      }
-
-      .faq {
-        max-width: 40rem;
-        margin: 0 auto;
-      }
-
-      .faq-item {
-        margin-bottom: 1rem;
-      }
-
-      .faq-item h4 {
-        margin-bottom: 0.5rem;
-        color: #3b82f6;
-      }
-
-      .contact-form {
-        max-width: 40rem;
-        margin: 0 auto;
-        background-color: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        padding: 2rem;
-      }
-
-      .contact-form form {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .contact-form label {
-        display: flex;
-        flex-direction: column;
-        font-size: 0.875rem;
-        color: #94a3b8;
-      }
-
-      .contact-form input,
-      .contact-form textarea {
-        padding: 0.5rem;
-        border-radius: 6px;
-        border: none;
-        background-color: rgba(255, 255, 255, 0.1);
-        color: white;
-      }
-
-      .contact-form button {
-        background-color: #3b82f6;
-        color: white;
-        padding: 0.75rem;
-        border-radius: 6px;
-        border: none;
-        font-size: 1rem;
-        cursor: pointer;
-      }
-
-      footer {
-        padding: 2rem;
-        text-align: center;
-        font-size: 0.875rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: 1rem;
-      }
-
-      .social-links a {
-        color: #3b82f6;
-        font-size: 1.25rem;
-        display: inline-block;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="logo">
-        <!-- Simplified E logo using a Unicode character -->
-        <span style="font-size: 2rem; color: #3b82f6; font-weight: bold;">E</span>
-        <span>ElevateEdge</span>
+  <section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+      <div class="service">
+        <h3>Custom Websites</h3>
+        <p>Beautiful, responsive websites tailored to your brand and optimized for mobile devices.</p>
       </div>
-      <nav>
-        <ul>
-          <li><a href="#packages">Packages</a></li>
-          <li><a href="#clients">Clients</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <section class="hero">
-      <!-- Removed hero image; background provided via CSS below -->
-      <div class="hero-content">
-        <h1>Elevate Your Brand’s Online Presence</h1>
-        <p>
-          We create compelling video content and social media strategies that grow
-          audiences and boost engagement for businesses like yours.
-        </p>
-        <a href="#packages" class="btn-primary">View Packages</a>
+      <div class="service">
+        <h3>Online Ordering</h3>
+        <p>Seamlessly integrated ordering systems that make it easy for customers to place orders.</p>
       </div>
-    </section>
-
-    <section id="packages" class="section">
-      <h2 class="section-title">Our Packages</h2>
-      <div class="packages">
-        <div class="package">
-          <h3>Starter</h3>
-          <div class="price">$500/mo</div>
-          <ul>
-            <li>8–12 short-form videos</li>
-            <li>Dynamic editing with modern effects</li>
-            <li>Hooks & CTAs included</li>
-            <li>Free revisions</li>
-            <!-- Added per user request -->
-            <li>Replying to comments and DMs</li>
-            <li>Stock content included</li>
-            <li>+$150 per extra video</li>
-          </ul>
-          <a href="#contact" class="btn">Choose Starter</a>
-        </div>
-        <div class="package">
-          <h3>Growth</h3>
-          <div class="price">$1,250/mo</div>
-          <ul>
-            <li>Includes everything from Starter</li>
-            <li>12–16 short-form videos</li>
-            <li>Strategy and scheduled posts</li>
-          </ul>
-          <a href="#contact" class="btn">Choose Growth</a>
-        </div>
-        <div class="package">
-          <h3>Scale</h3>
-          <div class="price">$2,500/mo</div>
-          <ul>
-            <li>Includes everything from Growth</li>
-            <li>20–24 short-form videos</li>
-            <li>Priority scheduling & consultation</li>
-          </ul>
-          <a href="#contact" class="btn">Choose Scale</a>
-        </div>
+      <div class="service">
+        <h3>Branding</h3>
+        <p>Logo design, menu creation, and marketing materials that reflect your business’s personality.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Add-Ons Section -->
-    <section id="add-ons" class="section">
-      <h2 class="section-title">Add-Ons</h2>
-      <p class="text-center mb-8">Enhance your package with extra services to maximize your brand impact.</p>
-      <div class="packages">
-        <div class="package">
-          <h3>Website Redesign</h3>
-          <div class="price">$200</div>
-          <p>Transform your digital presence with a custom website redesign that reflects your brand. Includes modern layout, responsive design, and SEO optimization.</p>
-        </div>
-        <div class="package">
-          <h3>T‑Shirts &amp; Posters</h3>
-          <div class="price">$50 + print</div>
-          <p>Custom merchandise designs for shirts and posters to promote your brand offline. Price includes design; printing costs are additional.</p>
-        </div>
-        <div class="package">
-          <h3>Priority Filming</h3>
-          <div class="price">$200</div>
-          <p>Need content in a rush? Priority filming slots ensure you get your videos shot and edited first.</p>
-        </div>
-      </div>
-    </section>
+  <section id="addons" class="addons">
+    <h2>Add‑Ons</h2>
+    <div class="addon">
+      <h3>Logo Redesign / Refresh</h3>
+      <p>Modernize or refine an existing logo; includes 2 design concepts, revisions, and final vector files.</p>
+      <span class="price">$150 – $300</span>
+    </div>
+    <div class="addon">
+      <h3>Menu Design (Digital + Print)</h3>
+      <p>Custom food or drink menu designed for print and social media, with layout, pricing, and photo placement.</p>
+      <span class="price">$200 – $400</span>
+    </div>
+    <div class="addon">
+      <h3>Poster / Banner / Flyer Design</h3>
+      <p>Eye-catching promotional designs for specials or events; includes print-ready PDF and social version.</p>
+      <span class="price">$100 – $200 each</span>
+    </div>
+    <div class="addon">
+      <h3>Business Card Design (with QR)</h3>
+      <p>Professional card layout with logo, brand colors, and QR code linking to website or menu.</p>
+      <span class="price">$75 – $120</span>
+    </div>
+    <div class="addon">
+      <h3>Email Marketing Setup</h3>
+      <p>Setup of branded email system (Mailchimp/Klaviyo) with templates, automations, and contact imports.</p>
+      <span class="price">$250 setup + $75/mo optional management</span>
+    </div>
+    <div class="addon">
+      <h3>SMS Campaign System</h3>
+      <p>Automated text-message campaigns using Twilio, TextMagic, or GoHighLevel, with message templates included.</p>
+      <span class="price">$250 setup + $50–$100/mo optional management</span>
+    </div>
+    <div class="addon">
+      <h3>Paid Ad Setup (Meta / Google)</h3>
+      <p>Ad account setup, pixel installation, two ad creatives, and audience targeting configuration.</p>
+      <span class="price">$300 – $500</span>
+    </div>
+    <div class="addon">
+      <h3>Drone Shots (1 Location)</h3>
+      <p>Aerial photos and short highlight video for restaurants, barbers, or property visuals.</p>
+      <span class="price">$250 – $400</span>
+    </div>
+    <div class="addon">
+      <h3>Behind‑the‑Scenes Video Content</h3>
+      <p>Capture and edit daily operations, cooking, or service moments for social media content.</p>
+      <span class="price">$200 – $350</span>
+    </div>
+    <div class="addon">
+      <h3>AI Phone Ordering Setup</h3>
+      <p>Voice AI system integrated with POS to take customer orders automatically 24/7.</p>
+      <span class="price">Custom Pricing</span>
+    </div>
+    <div class="addon">
+      <h3>Custom Linktree / Bio Design</h3>
+      <p>Branded link page with color theme, social icons, analytics, and QR connection.</p>
+      <span class="price">$80 – $150</span>
+    </div>
+    <div class="addon">
+      <h3>QR Menu System (Digital Menu)</h3>
+      <p>Interactive digital menu with QR code, mobile optimization, and optional updates.</p>
+      <span class="price">$150 setup + $20/mo optional hosting</span>
+    </div>
+    <div class="addon">
+      <h3>Employee Content Training</h3>
+      <p>1–2 hour training to teach staff how to film and capture content that matches ElevateEdge standards.</p>
+      <span class="price">$200 – $300</span>
+    </div>
+    <div class="addon">
+      <h3>Digital Reputation Repair</h3>
+      <p>Remove fake or bad reviews, respond professionally, and request new positive ones automatically.</p>
+      <span class="price">$150 – $250/mo or $300 one-time project</span>
+    </div>
+  </section>
 
-    <section id="snapshot" class="section chart">
-      <h2 class="section-title">Sample Growth Snapshot</h2>
-      <img src="growth_chart.png" alt="Sample growth chart" loading="lazy" />
-    </section>
+  <section id="testimonials" class="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial">
+      <p>"ElevateEdge transformed our restaurant’s online presence. We’ve seen a huge increase in reservations!"</p>
+      <span class="client-name">— The Brew Café</span>
+    </div>
+    <div class="testimonial">
+      <p>"Our new website and online booking system have streamlined our barbershop operations. Highly recommend!"</p>
+      <span class="client-name">— City Cuts Barbershop</span>
+    </div>
+  </section>
 
-    <section id="clients" class="section">
-      <h2 class="section-title">Our Clients</h2>
-      <div class="clients-logos">
-        <div class="client-card">G TOWN Wing &amp; Fish</div>
-        <div class="client-card">Blessed Barber Studio</div>
-        <div class="client-card">Your Business Next</div>
-        <div class="client-card">Local Brand</div>
-      </div>
-    </section>
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>Interested in working together? Send us a message and we’ll get back to you.</p>
+    <form action="mailto:theelevatededgeco@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+    <div class="social-links">
+      <a href="https://www.instagram.com/theelevateedgeco" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@theelevateedgeco" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61576587066032" target="_blank"><i class="fab fa-facebook"></i></a>
+    </div>
+  </section>
 
-    <section id="testimonials" class="section">
-      <h2 class="section-title">What Our Clients Say</h2>
-      <div class="testimonials">
-        <div class="testimonial">
-          <p>
-            “ElevateEdge grew our TikTok reach from 0 to 200 followers in a month.”
-          </p>
-          <div class="author">— G TOWN Wings &amp; Fish</div>
-        </div>
-        <div class="testimonial">
-          <p>
-            “ElevateEdge grew our TikTok and Instagram reach from 0 to 800 followers
-            with viral videos in five months.”
-          </p>
-          <div class="author">— Blessed Barber Studio</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" class="section">
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <div class="faq">
-        <div class="faq-item">
-          <h4>How fast can we start?</h4>
-          <p>
-            We can start the same day or the next day after your initial call,
-            depending on shoot scheduling.
-          </p>
-        </div>
-        <div class="faq-item">
-          <h4>Do I need to sign a contract?</h4>
-          <p>
-            Yes, but contracts are month to month, and you can cancel after your
-            paid month.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <h2 class="section-title">Contact Us</h2>
-      <div class="contact-form">
-        <form action="#" method="post">
-          <label>
-            Name
-            <input type="text" name="name" placeholder="Your Name" />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" placeholder="you@example.com" />
-          </label>
-          <label>
-            Phone
-            <input type="tel" name="phone" placeholder="(555) 555-5555" />
-          </label>
-          <label>
-            How did you hear about us?
-            <input type="text" name="referral" placeholder="TikTok, friend, etc." />
-          </label>
-          <label>
-            Tell us about your business
-            <textarea name="message" rows="4" placeholder="Briefly describe your needs"></textarea>
-          </label>
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    </section>
-
-    <footer>
-      <div>© 2025 ElevateEdge. All rights reserved.</div>
-      <div>2074 Fairburn Rd, Douglasville, GA 30135</div>
-      <div>Hours: 8am–10pm (America/New_York)</div>
-      <div>Email: <a href="mailto:theelevateedgemedia@gmail.com">theelevateedgemedia@gmail.com</a></div>
-      <div class="social-links">
-        <a href="https://www.instagram.com/theelevateedge/" aria-label="Instagram">📸</a>
-        <a href="https://www.tiktok.com/@theelevateedgeco" aria-label="TikTok">🎵</a>
-        <a href="https://www.youtube.com/@theelevateedge" aria-label="YouTube">🎬</a>
-      </div>
-    </footer>
-  </body>
+  <footer class="footer">
+    <p>&copy; 2025 ElevateEdge. All rights reserved.</p>
+  </footer>
+</body>
 </html>
